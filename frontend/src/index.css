@@ -1,0 +1,99 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    font-family: 'DM Sans', sans-serif;
+    color: #24382c;
+    background: #fbfaf6;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    --green: #174b35;
+    --green-dark: #103724;
+    --green-light: #eaf0e8;
+    --cream: #fbfaf6;
+    --gold: #bd9a61;
+    --text: #24382c;
+    --muted: #737b72;
+    --border: #e7e8df;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+body, button, input, textarea, select {
+    font-family: 'DM Sans', sans-serif;
+}
+
+button, input, textarea, select {
+    font-size: inherit;
+}
+
+button, a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, p {
+    margin-top: 0;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Manrope', sans-serif;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid #bd9a61;
+    outline-offset: 3px;
+}
+
+::selection {
+    background: #174b35;
+    color: white;
+}
+
+#root {
+    min-height: 100vh;
+    width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

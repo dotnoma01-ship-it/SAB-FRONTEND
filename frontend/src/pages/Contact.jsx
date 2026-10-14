@@ -1,0 +1,408 @@
+import { useState } from "react";
+
+const WHATSAPP_NUMBER = "2349168050906";
+
+const enquiryTypes = [
+    "Product Enquiry",
+    "Botanical Extracts",
+    "Plant-Based Ingredients",
+    "Research Collaboration",
+    "Business Partnership",
+    "General Enquiry",
+];
+
+function Contact() {
+    const [form, setForm] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+    });
+
+    const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [submitError, setSubmitError] = useState("");
+
+    const whatsappMessage =
+        "Hello Sought After Botaceutical (SAB)! 👋\n\n" +
+        "I visited your website and would like to make an enquiry.\n\n" +
+        "I am interested in learning more about your botanical products, " +
+        "plant-based ingredients, research, and business services.\n\n" +
+        "Please provide me with more information.\n\nThank you!";
+
+    const whatsappUrl =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    function handleChange(event) {
+        const { name, value } = event.target;
+
+        setForm((previous) => ({
+            ...previous,
+            [name]: value,
+        }));
+
+        setSubmitted(false);
+    }
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        if (sending) return;
+
+        setSending(true);
+        setSubmitted(false);
+        setSubmitError("");
+
+        try {
+            const apiBase = (
+                import.meta.env.VITE_API_URL ||
+                "http://localhost:5002/api"
+            ).replace(/\/+$/, "");
+
+            const response = await fetch(`${apiBase}/enquiries`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: form.name.trim(),
+                    email: form.email.trim(),
+                    subject: form.subject,
+                    message: form.message.trim(),
+                }),
+            });
+
+            const result = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(
+                    result.message ||
+                    "Unable to submit your enquiry. Please try again."
+                );
+            }
+
+            setSubmitted(true);
+            setForm({
+                name: "",
+                email: "",
+                subject: "",
+                message: "",
+            });
+        } catch (error) {
+            setSubmitError(
+                error.message ||
+                "Unable to submit your enquiry. Please try again."
+            );
+        } finally {
+            setSending(false);
+        }
+    }
+
+    return (
+        <div className="sa-contact-page">
+            <section className="sa-contact-hero">
+                <div className="sa-contact-hero-image">
+                    <img
+                        src="/images/botanical-hero.jpg"
+                        alt="Botanical foliage and natural greenery"
+                    />
+                </div>
+
+                <div className="sa-contact-hero-overlay"></div>
+
+                <div className="sa-container sa-contact-hero-content">
+                    <span className="sa-eyebrow">WE'RE HERE TO CONNECT</span>
+
+                    <h1>
+                        Good things begin
+                        <br />
+                        <span>with a conversation.</span>
+                    </h1>
+
+                    <p>
+                        Whether you're exploring our botanical products,
+                        considering a partnership, or simply have a question,
+                        we'd love to hear from you.
+                    </p>
+
+                    <div className="sa-contact-hero-actions">
+                        <a href="#contact-form" className="sa-contact-hero-button">
+                            Send Us an Enquiry <span>↘</span>
+                        </a>
+
+                        <a
+                            href={whatsappUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="sa-contact-whatsapp-hero"
+                        >
+                            <span>☏</span> Chat on WhatsApp
+                        </a>
+                    </div>
+
+                    <div className="sa-contact-hero-note">
+                        <span></span>
+                        PRODUCTS · RESEARCH · PARTNERSHIPS
+                    </div>
+                </div>
+            </section>
+
+            <section className="sa-contact-main">
+                <div className="sa-container">
+                    <div className="sa-contact-heading">
+                        <span className="sa-eyebrow">GET IN TOUCH</span>
+                        <h2>Let's talk about what you're looking for.</h2>
+                        <p>
+                            Choose your preferred contact method and tell us
+                            how we can help.
+                        </p>
+                    </div>
+
+                    <div className="sa-contact-layout">
+                        <aside className="sa-contact-sidebar">
+                            <div className="sa-contact-sidebar-intro">
+                                <span className="sa-contact-sidebar-symbol">S</span>
+
+                                <h3>Connect with SAB.</h3>
+
+                                <p>
+                                    We're interested in meaningful
+                                    conversations around botanical resources,
+                                    ingredient exploration, and business
+                                    collaboration.
+                                </p>
+                            </div>
+
+                            <div className="sa-contact-info-item">
+                                <span className="sa-contact-info-icon">@</span>
+
+                                <div>
+                                    <span className="sa-contact-info-label">
+                                        EMAIL ENQUIRIES
+                                    </span>
+
+                                    <a href="mailto:info@soughtafterbotaceutical.com">
+                                        info@soughtafterbotaceutical.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className="sa-contact-info-item">
+                                <span className="sa-contact-info-icon">☏</span>
+
+                                <div>
+                                    <span className="sa-contact-info-label">
+                                        WHATSAPP
+                                    </span>
+
+                                    <a
+                                        href={whatsappUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        +234 916 805 0906
+                                    </a>
+
+                                    <p>Chat with us about your enquiry.</p>
+                                </div>
+                            </div>
+
+                            <div className="sa-contact-info-item">
+                                <span className="sa-contact-info-icon">↗</span>
+
+                                <div>
+                                    <span className="sa-contact-info-label">
+                                        WHAT WE CAN DISCUSS
+                                    </span>
+
+                                    <p>
+                                        Product enquiries, research interests,
+                                        sourcing questions, and partnerships.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <a
+                                href={whatsappUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="sa-contact-whatsapp-sidebar"
+                            >
+                                <span>☏</span>
+                                <span>Start a WhatsApp Chat</span>
+                                <span>↗</span>
+                            </a>
+
+                            <div className="sa-contact-sidebar-bottom">
+                                <span className="sa-contact-sidebar-line"></span>
+                                <p>Every meaningful connection starts somewhere.</p>
+                            </div>
+                        </aside>
+
+                        <div className="sa-contact-form-panel" id="contact-form">
+                            <div className="sa-contact-form-heading">
+                                <div>
+                                    <span className="sa-eyebrow">
+                                        SEND AN ENQUIRY
+                                    </span>
+                                    <h3>How can we help?</h3>
+                                </div>
+
+                                <span className="sa-contact-required">
+                                    * Required fields
+                                </span>
+                            </div>
+
+                            <form
+                                className="sa-contact-form"
+                                onSubmit={handleSubmit}
+                            >
+                                <div className="sa-contact-field-grid">
+                                    <label className="sa-contact-field">
+                                        <span>Full name *</span>
+
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value={form.name}
+                                            onChange={handleChange}
+                                            placeholder="Your full name"
+                                            autoComplete="name"
+                                            maxLength="100"
+                                            required
+                                        />
+                                    </label>
+
+                                    <label className="sa-contact-field">
+                                        <span>Email address *</span>
+
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={form.email}
+                                            onChange={handleChange}
+                                            placeholder="you@example.com"
+                                            autoComplete="email"
+                                            maxLength="254"
+                                            required
+                                        />
+                                    </label>
+                                </div>
+
+                                <label className="sa-contact-field">
+                                    <span>What is your enquiry about? *</span>
+
+                                    <select
+                                        name="subject"
+                                        value={form.subject}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option value="" disabled>
+                                            Select an enquiry category
+                                        </option>
+
+                                        {enquiryTypes.map((type) => (
+                                            <option key={type} value={type}>
+                                                {type}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </label>
+
+                                <label className="sa-contact-field">
+                                    <span>Your message *</span>
+
+                                    <textarea
+                                        name="message"
+                                        value={form.message}
+                                        onChange={handleChange}
+                                        placeholder="Tell us about your enquiry, requirements, or proposed collaboration..."
+                                        rows="6"
+                                        maxLength="5000"
+                                        required
+                                    ></textarea>
+
+                                    <small>
+                                        {form.message.length}/5000 characters
+                                    </small>
+                                </label>
+
+                                <button className="sa-contact-submit" type="submit" disabled={sending}>
+                                    <span>Prepare Email Enquiry</span>
+                                    <span className="sa-contact-submit-arrow">↗</span>
+                                </button>
+
+                                {submitted && (
+                                    <div className="sa-contact-status" role="status">
+                                        <strong>Your email draft is being opened.</strong>
+                                        <p>
+                                            Review the recipient and message in
+                                            your email application, then send it.
+                                            If no email application opens, check
+                                            your device's email settings.
+                                        </p>
+                                    </div>
+                                )}
+
+                                <div className="sa-contact-or">
+                                    <span></span>
+                                    <p>OR CONTACT US DIRECTLY</p>
+                                    <span></span>
+                                </div>
+
+                                <a
+                                    href={whatsappUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="sa-contact-whatsapp-form"
+                                >
+                                    <span className="sa-contact-whatsapp-icon">☏</span>
+
+                                    <span className="sa-contact-whatsapp-copy">
+                                        <strong>Continue on WhatsApp</strong>
+                                        <small>
+                                            Opens a chat with a message already
+                                            prepared for you.
+                                        </small>
+                                    </span>
+
+                                    <span className="sa-contact-whatsapp-arrow">↗</span>
+                                </a>
+
+                                <p className="sa-contact-form-footnote">
+                                    Email enquiries are prepared in your email
+                                    enquiry system. WhatsApp opens a chat where
+                                    you can review and send your message.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="sa-contact-bottom">
+                <div className="sa-container sa-contact-bottom-inner">
+                    <div>
+                        <span className="sa-eyebrow">
+                            SOUGHT AFTER BOTACEUTICAL
+                        </span>
+
+                        <h2>Let's explore possibilities together.</h2>
+                    </div>
+
+                    <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="sa-contact-bottom-link"
+                    >
+                        Chat on WhatsApp <span>↗</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    );
+}
+
+export default Contact;
