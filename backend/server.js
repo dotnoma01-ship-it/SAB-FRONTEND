@@ -33,6 +33,8 @@ process.env.CLIENT_URL,
 "http://localhost:5177",
 "http://localhost:5178",
 "http://localhost:5179",
+        "https://sab-tawny-two.vercel.app",
+        "https://sab-frontend-gamma.vercel.app",
 ].filter(Boolean),
 })
 );
