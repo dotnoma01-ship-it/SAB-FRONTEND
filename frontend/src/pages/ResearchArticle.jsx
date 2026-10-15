@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const API_BASE_URL = "http://localhost:5002/api";
+const API_BASE_URL = "https://sab-frontend-bh7q.onrender.com/api";
 
 function formatDate(date) {
 if (!date) return "";
@@ -84,14 +84,14 @@ if (loading) {
 if (error || !article) {
     return (
         <section className="sa-article-state">
-            <span className="sa-article-state-icon">✳</span>
+            <span className="sa-article-state-icon">âœ³</span>
             <h1>Article unavailable</h1>
             <p>{error || "We couldn't find this article."}</p>
             <Link
                 to="/research"
                 className="sa-research-primary-button"
             >
-                Back to Research <span>↗</span>
+                Back to Research <span>â†—</span>
             </Link>
         </section>
     );
@@ -132,7 +132,7 @@ return (
 
                     {article.author?.name && (
                         <>
-                            <span aria-hidden="true">·</span>
+                            <span aria-hidden="true">Â·</span>
                             <span>By {article.author.name}</span>
                         </>
                     )}
@@ -179,7 +179,7 @@ return (
                             to="/research"
                             className="sa-article-sidebar-link"
                         >
-                            Explore More Articles <span>↗</span>
+                            Explore More Articles <span>â†—</span>
                         </Link>
                     </div>
                 </aside>
@@ -190,7 +190,7 @@ return (
                     to="/research"
                     className="sa-research-primary-button"
                 >
-                    <span aria-hidden="true">←</span>
+                    <span aria-hidden="true">â†</span>
                     Back to Research
                 </Link>
             </footer>
@@ -200,3 +200,4 @@ return (
 
 
 }
+

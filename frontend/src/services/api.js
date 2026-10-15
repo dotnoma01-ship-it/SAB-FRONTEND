@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5002/api";
+const API_BASE_URL = "https://sab-frontend-bh7q.onrender.com/api";
 
 export const getToken = () => {
     return localStorage.getItem("sab_admin_token");

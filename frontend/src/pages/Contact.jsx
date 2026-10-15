@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 
 const WHATSAPP_NUMBER = "2349168050906";
 
@@ -24,7 +24,7 @@ function Contact() {
     const [submitError, setSubmitError] = useState("");
 
     const whatsappMessage =
-        "Hello Sought After Botaceutical (SAB)! 👋\n\n" +
+        "Hello Sought After Botaceutical (SAB)! ðŸ‘‹\n\n" +
         "I visited your website and would like to make an enquiry.\n\n" +
         "I am interested in learning more about your botanical products, " +
         "plant-based ingredients, research, and business services.\n\n" +
@@ -56,7 +56,7 @@ function Contact() {
         try {
             const apiBase = (
                 import.meta.env.VITE_API_URL ||
-                "http://localhost:5002/api"
+                "https://sab-frontend-bh7q.onrender.com/api"
             ).replace(/\/+$/, "");
 
             const response = await fetch(`${apiBase}/enquiries`, {
@@ -127,7 +127,7 @@ function Contact() {
 
                     <div className="sa-contact-hero-actions">
                         <a href="#contact-form" className="sa-contact-hero-button">
-                            Send Us an Enquiry <span>↘</span>
+                            Send Us an Enquiry <span>â†˜</span>
                         </a>
 
                         <a
@@ -136,13 +136,13 @@ function Contact() {
                             rel="noopener noreferrer"
                             className="sa-contact-whatsapp-hero"
                         >
-                            <span>☏</span> Chat on WhatsApp
+                            <span>â˜</span> Chat on WhatsApp
                         </a>
                     </div>
 
                     <div className="sa-contact-hero-note">
                         <span></span>
-                        PRODUCTS · RESEARCH · PARTNERSHIPS
+                        PRODUCTS Â· RESEARCH Â· PARTNERSHIPS
                     </div>
                 </div>
             </section>
@@ -188,7 +188,7 @@ function Contact() {
                             </div>
 
                             <div className="sa-contact-info-item">
-                                <span className="sa-contact-info-icon">☏</span>
+                                <span className="sa-contact-info-icon">â˜</span>
 
                                 <div>
                                     <span className="sa-contact-info-label">
@@ -208,7 +208,7 @@ function Contact() {
                             </div>
 
                             <div className="sa-contact-info-item">
-                                <span className="sa-contact-info-icon">↗</span>
+                                <span className="sa-contact-info-icon">â†—</span>
 
                                 <div>
                                     <span className="sa-contact-info-label">
@@ -228,9 +228,9 @@ function Contact() {
                                 rel="noopener noreferrer"
                                 className="sa-contact-whatsapp-sidebar"
                             >
-                                <span>☏</span>
+                                <span>â˜</span>
                                 <span>Start a WhatsApp Chat</span>
-                                <span>↗</span>
+                                <span>â†—</span>
                             </a>
 
                             <div className="sa-contact-sidebar-bottom">
@@ -330,7 +330,7 @@ function Contact() {
 
                                 <button className="sa-contact-submit" type="submit" disabled={sending}>
                                     <span>Prepare Email Enquiry</span>
-                                    <span className="sa-contact-submit-arrow">↗</span>
+                                    <span className="sa-contact-submit-arrow">â†—</span>
                                 </button>
 
                                 {submitted && (
@@ -357,7 +357,7 @@ function Contact() {
                                     rel="noopener noreferrer"
                                     className="sa-contact-whatsapp-form"
                                 >
-                                    <span className="sa-contact-whatsapp-icon">☏</span>
+                                    <span className="sa-contact-whatsapp-icon">â˜</span>
 
                                     <span className="sa-contact-whatsapp-copy">
                                         <strong>Continue on WhatsApp</strong>
@@ -367,7 +367,7 @@ function Contact() {
                                         </small>
                                     </span>
 
-                                    <span className="sa-contact-whatsapp-arrow">↗</span>
+                                    <span className="sa-contact-whatsapp-arrow">â†—</span>
                                 </a>
 
                                 <p className="sa-contact-form-footnote">
@@ -397,7 +397,7 @@ function Contact() {
                         rel="noopener noreferrer"
                         className="sa-contact-bottom-link"
                     >
-                        Chat on WhatsApp <span>↗</span>
+                        Chat on WhatsApp <span>â†—</span>
                     </a>
                 </div>
             </section>
@@ -406,3 +406,4 @@ function Contact() {
 }
 
 export default Contact;
+

@@ -1,7 +1,7 @@
 ﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const API_BASE_URL = "http://localhost:5002/api";
+const API_BASE_URL = "https://sab-frontend-bh7q.onrender.com/api";
 
 const researchAreas = [
 {
@@ -505,3 +505,4 @@ return (
 }
 
 export default Research;
+
