@@ -24,14 +24,14 @@ function Contact() {
     const [submitError, setSubmitError] = useState("");
 
     const whatsappMessage =
-        "Hello Sought After Botaceutical (SAB)! ðŸ‘‹\n\n" +
+        "Hello Sought After Botaceuticals (SAB)! 👋‹\n\n" +
         "I visited your website and would like to make an enquiry.\n\n" +
         "I am interested in learning more about your botanical products, " +
         "plant-based ingredients, research, and business services.\n\n" +
         "Please provide me with more information.\n\nThank you!";
 
     const whatsappUrl =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+        `https://wa.me/$+2349168050906?text=${encodeURIComponent(whatsappMessage)}`;
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -136,7 +136,7 @@ function Contact() {
                             rel="noopener noreferrer"
                             className="sa-contact-whatsapp-hero"
                         >
-                            <span>â˜</span> Chat on WhatsApp
+                            <span>☎</span> Chat on WhatsApp
                         </a>
                     </div>
 
@@ -228,9 +228,9 @@ function Contact() {
                                 rel="noopener noreferrer"
                                 className="sa-contact-whatsapp-sidebar"
                             >
-                                <span>â˜</span>
+                                <span>☎</span>
                                 <span>Start a WhatsApp Chat</span>
-                                <span>â†—</span>
+                                <span>↗</span>
                             </a>
 
                             <div className="sa-contact-sidebar-bottom">
@@ -357,7 +357,7 @@ function Contact() {
                                     rel="noopener noreferrer"
                                     className="sa-contact-whatsapp-form"
                                 >
-                                    <span className="sa-contact-whatsapp-icon">â˜</span>
+                                    <span className="sa-contact-whatsapp-icon">☎</span>
 
                                     <span className="sa-contact-whatsapp-copy">
                                         <strong>Continue on WhatsApp</strong>
@@ -367,7 +367,7 @@ function Contact() {
                                         </small>
                                     </span>
 
-                                    <span className="sa-contact-whatsapp-arrow">â†—</span>
+                                    <span className="sa-contact-whatsapp-arrow">↗</span>
                                 </a>
 
                                 <p className="sa-contact-form-footnote">
@@ -397,7 +397,7 @@ function Contact() {
                         rel="noopener noreferrer"
                         className="sa-contact-bottom-link"
                     >
-                        Chat on WhatsApp <span>â†—</span>
+                        Chat on WhatsApp <span>↗</span>
                     </a>
                 </div>
             </section>
