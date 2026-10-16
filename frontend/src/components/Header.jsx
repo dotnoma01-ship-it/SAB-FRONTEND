@@ -49,7 +49,7 @@ function Header() {
                         className="sa-brand"
                         to="/"
                         onClick={closeMenu}
-                        aria-label="Sought After Botaceutical home"
+                        aria-label="Sought After Botaceuticals home"
                     >
                         <span className="sa-brand-mark">S</span>
 
@@ -59,7 +59,7 @@ function Header() {
                             </span>
 
                             <span className="sa-brand-subtitle">
-                                Botaceutical
+                                Botaceuticals
                             </span>
                         </span>
                     </Link>
