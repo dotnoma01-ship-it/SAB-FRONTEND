@@ -31,7 +31,7 @@ function Contact() {
         "Please provide me with more information.\n\nThank you!";
 
     const whatsappUrl =
-        `https://wa.me/$+2349168050906?text=${encodeURIComponent(whatsappMessage)}`;
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -127,7 +127,7 @@ function Contact() {
 
                     <div className="sa-contact-hero-actions">
                         <a href="#contact-form" className="sa-contact-hero-button">
-                            Send Us an Enquiry <span>â†˜</span>
+                            Send Us an Enquiry <span>↘</span>
                         </a>
 
                         <a
@@ -208,7 +208,7 @@ function Contact() {
                             </div>
 
                             <div className="sa-contact-info-item">
-                                <span className="sa-contact-info-icon">â†—</span>
+                                <span className="sa-contact-info-icon">↗</span>
 
                                 <div>
                                     <span className="sa-contact-info-label">
