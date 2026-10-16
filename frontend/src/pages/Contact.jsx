@@ -330,7 +330,7 @@ function Contact() {
 
                                 <button className="sa-contact-submit" type="submit" disabled={sending}>
                                     <span>Prepare Email Enquiry</span>
-                                    <span className="sa-contact-submit-arrow">â†—</span>
+                                    <span className="sa-contact-submit-arrow">↗</span>
                                 </button>
 
                                 {submitted && (
